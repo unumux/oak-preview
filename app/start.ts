@@ -21,7 +21,3 @@ export async function start(flags) {
 
     }
 }
-
-async function readPackageJson() {
-
-}
