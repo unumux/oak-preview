@@ -1,0 +1,35 @@
+{
+  "name": "@unumux/oak-preview",
+  "bin": {
+    "oak": "dist/index.js"
+  },
+  "version": "3.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/typescript": "^2.0.0",
+    "typescript": "^2.2.2"
+  },
+  "dependencies": {
+    "@types/fs-promise": "^1.0.3",
+    "@types/meow": "^3.6.2",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^7.0.13",
+    "@unumux/lib-ux": "^1.0.0",
+    "@unumux/ux-debug": "^1.1.0",
+    "@unumux/ux-questions": "^1.1.0",
+    "fs-extra": "^2.1.2",
+    "fs-promise": "^2.0.2",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.4",
+    "meow": "^3.7.0",
+    "minimist": "^1.2.0",
+    "semver": "^5.3.0"
+  }
+}
