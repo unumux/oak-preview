@@ -1,9 +1,9 @@
 import * as question from "@unumux/ux-questions";
 import * as debug from "@unumux/ux-debug";
 
-import * as fsp from "./lib/fsp";
-import {npm} from "./lib/npm";
-import {exec} from "./lib/exec";
+import * as fsp from "../lib/fsp";
+import {npm} from "../lib/npm";
+import {exec} from "../lib/exec";
 
 export async function start(flags) {
     // check if `npm start` exists

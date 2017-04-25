@@ -1,6 +1,9 @@
-import * as fsp from "./lib/fsp";
-import { scaffold } from "./lib/scaffold";
-import { npm } from "./lib/npm";
+import * as chalk from "chalk";
+import * as debug from "@unumux/ux-debug";
+
+import * as fsp from "../lib/fsp";
+import { scaffold } from "../lib/scaffold";
+import { npm } from "../lib/npm";
 
 export async function init(flags) {
     const currentDirContents = await fsp.readdir("./");

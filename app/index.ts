@@ -4,8 +4,7 @@ import * as meow from "meow";
 import * as debug from "@unumux/ux-debug";
 import * as chalk from "chalk";
 
-import {init} from "./init";
-import {start} from "./start";
+import {main} from "./main";
 
 const cli = meow(`
 
@@ -37,15 +36,4 @@ if(cli.flags.debug) {
     debug.log("Debug logging enabled");
 }
 
-async function main() {
-    if(cli.input.indexOf("init") > -1) {
-        await init(cli.flags);
-        console.log(`New project created! Run ${chalk.yellow("oak start")} to launch your project`);
-    } else if(cli.input.indexOf("start") > -1) {
-        await start(cli.flags);
-    } else {
-        cli.showHelp();
-    }
-}
-
-main();
+main(cli.input, cli.flags, cli.showHelp);
