@@ -48,9 +48,9 @@ async function checkDependency(version, name, packagePath, manifestName) {
 }
 
 export async function shouldInstallPackages(packagePath, dependencies, manifestName) {
-    let depPromises = _.map(dependencies, function(version, name) {
-        let parsedVersion = version.split("#");
-        return checkDependency(parsedVersion[parsedVersion.length - 1], name, packagePath, manifestName);
+    let depPromises = _.map(dependencies, function(packageItem) {
+        let parsedVersion = packageItem.version.split("#");
+        return checkDependency(parsedVersion[parsedVersion.length - 1], packageItem.name, packagePath, manifestName);
     });
 
     let res = await Promise.all(depPromises);
@@ -60,10 +60,8 @@ export async function shouldInstallPackages(packagePath, dependencies, manifestN
     }, false);
 }
 
-export async function shouldInstallNPMPackages() {
-    let packageJson = JSON.parse(fs.readFileSync("./package.json").toString());
-    let dependencies = _.merge(packageJson.devDependencies, packageJson.dependencies);
-    return shouldInstallPackages(NM_PATH, dependencies, "package.json");
+export async function shouldInstallNPMPackages(packages) {
+    return shouldInstallPackages(NM_PATH, packages, "package.json");
 }
 
 export async function shouldInstallBowerPackages() {

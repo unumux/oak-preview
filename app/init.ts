@@ -1,5 +1,6 @@
 import * as fsp from "./lib/fsp";
 import { scaffold } from "./lib/scaffold";
+import { npm } from "./lib/npm";
 
 export async function init(flags) {
     const currentDirContents = await fsp.readdir("./");
@@ -10,4 +11,6 @@ export async function init(flags) {
     }
 
     await scaffold("basic", "./");
+    npm.addDev({ name: "@unumux/ux-build-tools", version: "*" });
+    await npm.install();
 }
