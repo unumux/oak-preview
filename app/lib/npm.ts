@@ -23,10 +23,18 @@ class NPM {
 
     async install() {
         await this.loadPackagesFromJson();
-        if(await depCheck.shouldInstallNPMPackages(this.devPackages)) {
+        if(await depCheck.shouldInstallNPMPackages(_.merge([], this.devPackages, this.packages))) {
             console.log("Installing NPM Packages...");
-            const packageNames = this.devPackages.map((packageItem) => packageItem.name);
-            return exec(`npm install --save-dev ${packageNames.join(" ")}`, debug.enabled);
+            
+            debug.log("Preparing to install prod packages");
+            // install non-dev packages
+            const packageNames = this.packages.map((packageItem) => packageItem.name);
+            await exec(`npm install --save ${packageNames.join(" ")}`, debug.enabled());
+
+            debug.log("Preparing to install dev packages");
+            // install dev packages
+            const devPackageNames = this.devPackages.map((packageItem) => packageItem.name);
+            await exec(`npm install --save-dev ${devPackageNames.join(" ")}`, debug.enabled());
         }
     }
     
@@ -37,13 +45,13 @@ class NPM {
         const newDevPackages = _.map(packageJSON.devDependencies, (value, key) => { 
             return { name: key, version: value }
         });
-        this.devPackages = _.merge(this.devPackages, newDevPackages);
+        this.devPackages = _.merge([], this.devPackages, newDevPackages);
 
         // load prod packages
         const newPackages = _.map(packageJSON.dependencies, (value, key) => { 
             return { name: key, version: value }
         });
-        this.packages = _.merge(this.packages, newPackages);
+        this.packages = _.merge([], this.packages, newPackages);
         
     }
 }

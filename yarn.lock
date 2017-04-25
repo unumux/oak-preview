@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/chalk@^0.4.31":
+  version "0.4.31"
+  resolved "https://registry.npmjs.org/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
+
 "@types/fs-promise@^1.0.3":
   version "1.0.3"
   resolved "https://registry.npmjs.org/@types/fs-promise/-/fs-promise-1.0.3.tgz#1ee71e7a1edd3503a905cdec26240f485dcdcbaf"

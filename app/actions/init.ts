@@ -1,9 +1,12 @@
 import * as chalk from "chalk";
 import * as debug from "@unumux/ux-debug";
+import * as questions from "@unumux/ux-questions";
 
 import * as fsp from "../lib/fsp";
 import { scaffold } from "../lib/scaffold";
 import { npm } from "../lib/npm";
+import * as willow from "../lib/willow";
+
 
 export async function init(flags) {
     const currentDirContents = await fsp.readdir("./");
@@ -13,7 +16,16 @@ export async function init(flags) {
         return;
     }
 
+    const shouldContinue = await questions.yesNo(`Create a new Oak project in ${chalk.yellow(process.cwd())}?`);
+
+    if(!shouldContinue) {
+        return;
+    }
+
+    await willow.promptForInstall();
+
     await scaffold("basic", "./");
     npm.addDev({ name: "@unumux/ux-build-tools", version: "*" });
     await npm.install();
+    console.log(`New project created! Run ${chalk.yellow("oak start")} to launch your project`);
 }
