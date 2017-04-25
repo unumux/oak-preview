@@ -2,16 +2,18 @@
 
 import * as meow from "meow";
 import * as debug from "@unumux/ux-debug";
-import {start} from "./start";
+import * as chalk from "chalk";
+
 import {init} from "./init";
+import {start} from "./start";
 
 const cli = meow(`
 
     Usage
-      $ oak init
+      $ ${chalk.yellow("oak init")}
         - creates a new Oak project
     
-      $ oak start
+      $ ${chalk.yellow("oak start")}
         - starts an Oak project
  
     Options
@@ -38,7 +40,7 @@ if(cli.flags.debug) {
 async function main() {
     if(cli.input.indexOf("init") > -1) {
         await init(cli.flags);
-        await start(cli.flags);        
+        console.log(`New project created! Run ${chalk.yellow("oak start")} to launch your project`);
     } else if(cli.input.indexOf("start") > -1) {
         await start(cli.flags);
     } else {
