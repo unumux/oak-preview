@@ -3,7 +3,7 @@
   "bin": {
     "oak": "dist/index.js"
   },
-  "version": "3.0.0-alpha4",
+  "version": "3.0.0-alpha5",
   "description": "",
   "main": "index.js",
   "scripts": {
