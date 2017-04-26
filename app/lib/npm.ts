@@ -47,15 +47,7 @@ class NPM {
         if(await depCheck.shouldInstallNPMPackages(_.merge([], this.devPackages, this.packages))) {
             console.log("Installing NPM Packages...");
             
-            debug.log("Preparing to install prod packages");
-            // install non-dev packages
-            const packageNames = this.packages.map((packageItem) => packageItem.name);
-            await exec(`npm install --save ${packageNames.join(" ")}`, debug.enabled());
-
-            debug.log("Preparing to install dev packages");
-            // install dev packages
-            const devPackageNames = this.devPackages.map((packageItem) => packageItem.name);
-            await exec(`npm install --save-dev ${devPackageNames.join(" ")}`, debug.enabled());
+            await exec(`npm install`);
         }
     }
     
