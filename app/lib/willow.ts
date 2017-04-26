@@ -14,7 +14,7 @@ export async function promptForInstall() {
 
     const themeToInstall = await questions.list("Select a theme to install", await AVAILABLE_THEMES);
     
-    npm.add({ name: themeToInstall, version: "*" });
+    npm.add({ name: themeToInstall });
 }
 
 export async function getAvailableThemes() {

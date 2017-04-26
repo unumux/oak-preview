@@ -25,6 +25,18 @@ export function readFile(filename: string) {
     });
 }
 
+export function writeFile(filename: string, contents: string) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(filename, contents, (err, data) => {
+            if(err) {
+                return reject(err);
+            }
+
+            resolve(data);
+        });
+    });
+}
+
 export function readdir(dirname: string): Promise<string[]> {
     return new Promise<string[]>((resolve, reject) => {
         fs.readdir(dirname, (err, files) => {

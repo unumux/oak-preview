@@ -9,6 +9,7 @@ import * as willow from "../lib/willow";
 
 
 export async function init(flags) {
+    npm.addDev({ name: "@unumux/ux-build-tools" });    
     const currentDirContents = await fsp.readdir("./");
 
     if(currentDirContents.length > 0) {
@@ -25,7 +26,6 @@ export async function init(flags) {
     await willow.promptForInstall();
 
     await scaffold("basic", "./");
-    npm.addDev({ name: "@unumux/ux-build-tools", version: "*" });
-    await npm.install();
+    await npm.saveToPackageJson();
     console.log(`New project created! Run ${chalk.yellow("oak start")} to launch your project`);
 }
