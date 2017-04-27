@@ -18,6 +18,7 @@ const cli = meow(`
     Options
       --debug       Display debug logging
       --version     Display version information
+      --force       Forces Oak to run init, even if folder is not empty
  
 `, {
     alias: {

@@ -12,7 +12,7 @@ export async function init(flags) {
     npm.addDev({ name: "@unumux/ux-build-tools" });    
     const currentDirContents = await fsp.readdir("./");
 
-    if(currentDirContents.length > 0) {
+    if(currentDirContents.length > 0 && !flags.force) {
         console.log("Init should only be used in an empty directory!");
         return;
     }
