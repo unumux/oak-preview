@@ -8,6 +8,7 @@ import {exec} from "./exec";
 interface Package {
     name: string;
     version?: string | Promise<string>;
+    main?: string
 }
 
 class NPM {

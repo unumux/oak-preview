@@ -1,6 +1,7 @@
 import * as chalk from "chalk";
 import * as debug from "@unumux/ux-debug";
 import * as questions from "@unumux/ux-questions";
+import * as path from "path";
 
 import * as fsp from "../lib/fsp";
 import { scaffold } from "../lib/scaffold";
@@ -25,7 +26,9 @@ export async function init(flags) {
 
     await willow.promptForInstall();
 
-    await scaffold("basic", "./");
+    const styleImports = npm.packages.filter(item => item.main.match(/\.scss$/).length === 1).map(item => path.join("node_modules", item.name, item.main));
+
+    await scaffold("basic", "./", {styleImports});
     await npm.saveToPackageJson();
     console.log(`New project created! Run ${chalk.yellow("oak start")} to launch your project`);
 }

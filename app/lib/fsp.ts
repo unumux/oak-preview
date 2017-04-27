@@ -1,5 +1,8 @@
 import * as fs from "fs";
 import * as fse from "fs-extra";
+import * as globLib from "glob";
+import * as mkdirpLib from "mkdirp";
+
 import * as debug from "@unumux/ux-debug";
 
 export function fileExists(filename: string) {
@@ -47,6 +50,32 @@ export function readdir(dirname: string): Promise<string[]> {
             resolve(files);
         });
     });
+}
+
+export function glob(globString: string, options = {}): Promise<string[]> {
+    return new Promise<string[]>((resolve, reject) => {
+        globLib(globString, options, (err, files) => {
+            if(err) {
+                return reject(err);
+            }
+
+            resolve(files);
+        });
+    });
+}
+
+export function mkdirp(dir: string) {
+    return new Promise((resolve, reject) => {
+        mkdirpLib(dir, (err) => {
+            debug.log(`Attempting to make directory: ${dir}`);
+            if(err) {
+                debug.err(err);
+                return reject(err);
+            }
+            debug.log(`Finished making directory: ${dir}`);
+            resolve();
+        });
+    })
 }
 
 export function copydir(src: string, dest: string) {

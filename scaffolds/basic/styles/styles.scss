@@ -1,8 +1,1 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background: #dedede;
-    color: #111;
-}
+<% _.forEach(styleImports, function(styleImport) { %>@import "<%- styleImport %>";<% }) %>
