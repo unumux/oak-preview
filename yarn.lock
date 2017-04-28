@@ -33,6 +33,10 @@
   version "1.2.0"
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
 
+"@types/mkdirp@^0.3.29":
+  version "0.3.29"
+  resolved "https://registry.npmjs.org/@types/mkdirp/-/mkdirp-0.3.29.tgz#7f2ad7ec55f914482fc9b1ec4bb1ae6028d46066"
+
 "@types/mz@*":
   version "0.0.31"
   resolved "https://registry.npmjs.org/@types/mz/-/mz-0.0.31.tgz#a4d80c082fefe71e40a7c0f07d1e6555bbbc7b52"
@@ -251,6 +255,12 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+d@1:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
+  dependencies:
+    es5-ext "^0.10.9"
+
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
@@ -277,15 +287,51 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
+es5-ext@^0.10.12, es5-ext@^0.10.14, es5-ext@^0.10.7, es5-ext@^0.10.9, es5-ext@~0.10.14:
+  version "0.10.15"
+  resolved "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.15.tgz#c330a5934c1ee21284a7c081a86e5fd937c91ea6"
+  dependencies:
+    es6-iterator "2"
+    es6-symbol "~3.1"
+
+es6-iterator@2:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.1.tgz#8e319c9f0453bf575d374940a655920e59ca5512"
+  dependencies:
+    d "1"
+    es5-ext "^0.10.14"
+    es6-symbol "^3.1"
+
+es6-symbol@^3.1, es6-symbol@~3.1:
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/es6-symbol/-/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
+  dependencies:
+    d "1"
+    es5-ext "~0.10.14"
+
+es6-template-strings@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/es6-template-strings/-/es6-template-strings-2.0.0.tgz#35c80365efbbc1510fe7ca9f475967d546c169fc"
+  dependencies:
+    es5-ext "^0.10.7"
+    esniff "1"
+
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
+
+esniff@1:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/esniff/-/esniff-1.1.0.tgz#c66849229f91464dede2e0d40201ed6abf65f2ac"
+  dependencies:
+    d "1"
+    es5-ext "^0.10.12"
 
 exit-hook@^1.0.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
 
-extend@~3.0.0:
+extend@3.0.0, extend@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/extend/-/extend-3.0.0.tgz#5a474353b9f3353ddd8176dfd37b91c83a46f1d4"
 
@@ -306,6 +352,13 @@ find-up@^1.0.0:
   dependencies:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
+
+fluid-publish@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/fluid-publish/-/fluid-publish-2.0.0.tgz#0a9c2a226caa99725e7996ce0d7b3fe52d5dc63a"
+  dependencies:
+    es6-template-strings "2.0.0"
+    extend "3.0.0"
 
 forever-agent@~0.6.1:
   version "0.6.1"
