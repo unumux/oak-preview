@@ -1,9 +1,9 @@
 {
-  "name": "@unumux/oak-preview",
+  "name": "@unumux/oak",
   "bin": {
     "oak": "dist/index.js"
   },
-  "version": "3.0.0-alpha9",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
