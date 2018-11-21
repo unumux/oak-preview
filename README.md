@@ -1,6 +1,9 @@
 # Developing
 
 - Clone this repo
-- Run `npm link` in the repo's folder
-- Run `npm start` to start the Typescript compiler
+- Navigate to repo folder
+- Run `npm install`
+- Run `npm run build` to run the Typescript compiler once
+- Run `npm link`
+- Run `npm start` to run the Typescript compiler and watch for changes
 - Create an empty folder outside of the repo root and run `oak init` to start
