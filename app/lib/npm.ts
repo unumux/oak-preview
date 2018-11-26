@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import * as debug from "@unumux/ux-debug";
 import * as depCheck from "./dep-check";
-import * as fsp from "./fsp";
+import * as fse from "fs-extra";
 import {getVersionForPackage} from "./npm-registry";
 import {exec} from "./exec";
  
@@ -30,7 +30,7 @@ class NPM {
     }
 
     async saveToPackageJson() {
-        const packageJSON = fsp.readJSON("./package.json");
+        const packageJSON = fse.readJson("./package.json");
         const devDependencies = this.devPackages.reduce(async (previousValue, currentValue) => {
             return {...previousValue, [currentValue.name]: await currentValue.version};
         }, {});
@@ -40,7 +40,7 @@ class NPM {
         }, {});
 
         const newPackageJSON = Object.assign({}, await packageJSON, { dependencies: await dependencies, devDependencies: await devDependencies });
-        await fsp.writeFile("./package.json", JSON.stringify(newPackageJSON));
+        await fse.writeFile("./package.json", JSON.stringify(newPackageJSON));
     }
 
     async install() {
@@ -53,7 +53,7 @@ class NPM {
     }
     
     async loadPackagesFromJson() {
-        const packageJSON = await fsp.readJSON("./package.json");
+        const packageJSON = await fse.readJson("./package.json");
 
         // load dev packages
         const newDevPackages = _.map(packageJSON.devDependencies, (value, key) => { 

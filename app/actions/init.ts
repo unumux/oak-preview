@@ -3,7 +3,7 @@ import * as debug from "@unumux/ux-debug";
 import * as questions from "@unumux/ux-questions";
 import * as path from "path";
 
-import * as fsp from "../lib/fsp";
+import * as fse from "fs-extra";
 import { scaffold } from "../lib/scaffold";
 import { npm } from "../lib/npm";
 import * as willow from "../lib/willow";
@@ -11,7 +11,7 @@ import * as willow from "../lib/willow";
 
 export async function init(flags) {
     npm.addDev({ name: "@unumux/ux-build-tools" });    
-    const currentDirContents = await fsp.readdir("./");
+    const currentDirContents = await fse.readdir("./");
 
     if(currentDirContents.length > 0 && !flags.force) {
         console.log("Init should only be used in an empty directory!");
